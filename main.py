@@ -9,15 +9,24 @@ app = Bottle()
 def index(db):
 
     info = {
-        'title': 'My Website',
-        'message': 'Hello World!'
+        'title': 'Home'
     }
 
     return template('index', info)
 
+@app.route('/about/')
+def index(db):
+
+    info = {
+        'title': 'About'
+    }
+
+    return template('about', info)
+
 @app.route('/static/<filename:path>')
 def static(filename):
     return static_file(filename=filename, root='static')
+
 
 
 
