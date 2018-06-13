@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Assignment Requirements: Level 3</title>
+
+    <!-- Bootstrap core CSS -->
+	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="draft">
+
+  <div class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+	  <a class="navbar-brand" href="#">Jobs!</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse">
+		  <ul class="navbar-nav mr-auto">
+			  <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+			  <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+			  <li class="nav-item"><a class="nav-link" href="/static/assignment.html">Assignment Spec</a></li>
+		  </ul>
+	  </div><!--/.nav-collapse -->
+  </div>
+
+    <div class="container">
+ 
+	<h1>Level 3</h1>
+	
+	<p>The Level 3 requirements concentrate on being able to log in and out of the
+		application and see a page customised for the user. To meet this level you must implement another
+		set of procedures in the module <code>user.py</code>,
+        and then extend your
+		web application to allow user login.</p>
+
+
+
+	<h2>Unit Tests</h2>
+
+	<p>This level adds four procedures in a new <code>users</code>
+		that deal with authenticating users
+		and managing user sessions.
+		They act as an interface to the
+		<code>users</code> and <code>sessions</code> tables in
+		the database.   These procedures are
+	    implemented in the module <code>users.py</code>; a version of
+		this file with just the procedure stubs is provided for you.</p>
+
+	<ol>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">check_login</h4>
+
+		<p>There is a procedure <code>check_login</code> in the <code>users</code> module
+		that takes three arguments, a database connection, a user nick and a password, and returns
+		True if the password is correct for this user and False otherwise.
+		Note that the password is stored in the database as a one-way hash.
+		You can use the <code>password_hash(text)</code> to generate a one-way hash
+			from a password (imported from the database module).</p>
+	</li>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">generate_session</h4>
+
+		<p>There is a procedure <code>generate_session</code> in the <code>users</code> module
+		that takes two arguments,
+		a database connection and a user nick. If the nick doesn't correspond to
+		an existing user, then it returns None.  If this user doesn't already
+		have an active session (an entry in the sessions table) then a new
+		entry is created.   If there is an existing entry, then the existing
+		session id is retrieved. The procedure then creates a cookie in the
+        Bottle <code>response</code> with the name
+		<code>sessionid</code> and a value of the session id for this user.
+			The procedure returns the <code>sessionid</code>.</p>
+	</li>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">delete_session</h4>
+
+		<p>There is a procedure <code>delete_sessions</code> in the <code>users</code> module
+		that takes two
+		arguments, a database connection and a user nick.  The procedure
+		removes all entries for this user in the sessions table. It does
+			not return a value.</p>
+	</li>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">session_user</h4>
+
+		<p>There is a procedure <code>session_user</code> in the <code>users</code> module
+		that takes
+		one arguments, a database connection, and
+		returns the name of the logged in user if one can be identified or
+		None if not.   This is done by finding the session id from the cookie
+		in the Bottle <code>request</code> if present, and using it to look up
+			the user in the sessions table.</p>
+	</li>
+
+ </ol>
+
+
+
+	 <h2>Functional requirements</h2>
+	  
+<p>As for level two plus:</p>
+
+	<ol>
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Login Form</h4>
+
+		<p>As a visitor to the site, when I load the home page, I see a form with entry
+			boxes for <em>nick</em> and <em>password</em> and a button labelled <em>Login</em>.</p>
+
+      <div class='alert alert-info'>
+		  <ul>
+			  <li>The login form will have the id 'loginform' and 
+		   will use fields named 'nick' and 'password'.</li>
+		   
+	   		<li>The <code>action</code> of the login form will be
+		   <code>/login</code>.</li>
+		  </ul>
+	  </div>
+    </li>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Logging In</h4>
+
+		<p>As a registered user, when I enter my user nickname (eg. Bobalooba)
+		and password (bob) into the
+		login form and click on the Login button, the response is a
+        redirect to the main application page (/). When my browser loads
+        that page I see the normal home page with the login form replaced by the message
+			<em>"Logged in as Bobalooba"</em> and a button labelled <em>Logout</em>.</p>
+		
+      <div class='alert alert-info'>
+		  <ul>
+			  <li>The response generated by the successful login action
+			is a redirect (302 Found) response that redirects the user
+			to the home page.</li>
+			
+		<li>The redirect response also includes a cookie with the
+			name <code>sessionid</code> that contains some kind of random string.</li>
+			
+		<li> The logout button will be in a form with id <code>logoutform</code>
+            and have an </code><code>input</code> submit field with
+			the name <code>logout</code>.</li>
+		</ul>
+	</div>
+	</li>
+	
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Failed Login</h4>
+
+		<p>As a registered user, when I enter my email address but get my password
+		wrong and click on the Login button, the page I get in response contains
+		a message "Login Failed, please try again".  The page also includes another
+			login form.</p>
+	</li>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Posting a Job</h4>
+
+			As a registered user, I can fill out a form on the main
+        page to create a new job listing (position), when I submit the form I am redirected
+        to the main page and my new position appears in the list.
+            <div class='alert alert-info'>
+    		  <ul>
+                  <li>The form to post a new position will have the id <code>postform</code></li>
+                  <li>The action attribute for the form will be the URL <code>/post</code></li>
+              </ul>
+            </div>
+        </li>
+
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Logout Button</h4>
+
+		<p>As a registered user, once I have logged in, every page that I request
+			contains my name and the logout button.</p>
+	</li>
+		
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Logging Out</h4>
+
+		<p>As a registered user, once I have logged in, if I click on the Logout
+		button in a page, the page that I get in response is the site home
+			page which now doesn't have my name and again shows the login form.</p>
+
+        <div class='alert alert-info'>
+  		  <ul>
+			  <li>The response to a logout request is again a redirect
+			 (302 Found) response that redirects the user to the home
+			 page.</li>
+              <li>When I now request the home page, I see the login form again because
+              the session has been deleted.</li>
+		 </ul>
+	   </div>
+	</ol>
+	
+
+ 
+<h2>Your Task</h2>
+
+
+	<p>To achieve these requirements you will need to implement the new procedures
+		in <code>users.py</code> and then make
+		use of these to extend your application to support user login and posting jobs.</p>
+		
+	<p>This may seem like a huge task but the number of features and tests listed
+		above are there to make your job as clear as possible.   Take each
+		task a step at a time and read the requirements clearly.</p>
+		
+
+
+	<p>The following chapters in the notes may be useful:</p>
+	
+	<ul>
+		<li><a href="http://pwp.stevecassidy.net/bottle/sessions.html">Session Management</a>
+			covers using cookies and a sessions table to create user sessions.</li>
+	    <li><a href="http://pwp.stevecassidy.net/bottle/forms-processing.html">Forms Processing</a> describes
+            handling form input in a Bottle script.</li>
+		<li><a href="http://pwp.stevecassidy.net/python/pysqlite.html">Python and SQLite</a> describes the
+			way to send queries to SQLite and get results back.</li>
+		<li><a href="http://pwp.stevecassidy.net/bottle/bottle-sqlite.html">Web Applications with SQLite</a> looks at using
+			SQLite databases as part of an appliication.</li>
+		<li><a href="http://pwp.stevecassidy.net/python/unittest.html">Testing Python 
+			Programs</a> covers running unit tests.</li>
+	</ul>
+
+
+    <footer class='footer'>
+    <hr>
+      <div class='container'>
+        <p>Jobs is a class project for COMP249 at Macquarie University</p>
+        <p>Jobs uses <a href="http://twitter.github.com/bootstrap/index.html">Twitter Bootstrap</a></p>
+        <p>Copyright &copy; <a href="http://web.science.mq.edu.au/~cassidy/">Steve Cassidy</a>, 2015</p>
+      </div>
+    </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

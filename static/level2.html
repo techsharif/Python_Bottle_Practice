@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Assignment Requirements</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="draft">
+
+<div class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <a class="navbar-brand" href="#">Jobs!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/static/assignment.html">Assignment Spec</a></li>
+        </ul>
+    </div><!--/.nav-collapse -->
+</div>
+
+<div class="container">
+
+    <h1>Level 2</h1>
+
+    <p>In this phase you will write a basic version of the web application that can
+        display but not create job listings. This means we don't yet have to worry about login
+        and sessions but that you must interface to the database to lists positions. </p>
+
+    <p>Following the model-view-controller architecture, the first thing that you'll
+        implement is the database model. This is contained in a module <code>interface.py</code>
+        with all of the code to retrieve and store positions in the database.
+        You will then implement the views (templates) and controllers for the web application
+        that makes use of the models present the data on the web.
+    </p>
+
+    <p>All of the work you do will be tested using unit tests. For the database interface,
+        there are straightforward unit tests of the functions that you will write. To test the
+        behaviour of the web application we'll use functional testing that requests your pages
+        and checks that they have certain contents, and that we can login and position
+        messages. We will do this using a module called
+        <a href="http://webtest.readthedocs.org/">WebTest</a> that is designed specifically
+        for functional testing of Python web applications.
+    </p>
+
+    <h2>Unit Tests</h2>
+
+    <p> All procedures will be implemented in
+        the module <code>interface.py</code>. A version has been supplied that contains the procedure
+        stubs only.</p>
+
+    <p>When we refer to a database connection below we mean the connection returned by the
+        <code>sqlite3.connect</code> function.  In all cases this will be passed into
+        your functions.  The connection is created either by your main application or
+        the test code.</p>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">position_list</h4>
+
+            <p>There is a function <code>position_list(db, limit=10)</code>.
+                <code>db</code> is a database connection
+                and the optional argument limit is an integer. The function returns a list of tuples
+                representing the positions stored in the database, each tuple contains: <code> (id, timestamp, owner,
+                    title,
+                    location, company, description)</code>.
+                Messages are returned in reverse
+                order of the timestamp, most recent first.</p>
+        </li>
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">position_get</h4>
+
+            <p>There is a function <code>position_get(db, id)</code>.
+                <code>db</code> is a database connection
+                and <code>id</code> is an integer position identifier.
+                The function returns a tuple
+                representing the position with the given id,
+                the tuple contains: <code> (id, timestamp, owner, title,
+                    location, company, description)</code>.
+            </p>
+            <p>If the <code>id</code> does not match a record in the
+            database, the function should return <code>None</code>.</p>
+
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">position_add</h4>
+
+            <p>There is a function <code>position_add(db, usernick, title, location, company, description)</code>.
+                <code>db</code> is a database connection, the argument <code>usernick</code> is a user name and
+                <code>title, location, company</code> and <code>description</code> are the values of
+                the respective fields in the positions table. The function adds the new position
+                to the database.</p>
+
+            <p>If <code>usernick</code> does not a user in the users table, no new record should
+            be created and the function should return <code>False</code></p>
+
+            <p>If the record is added successfully, the function should return <code>True</code>.</p>
+        </li>
+
+    </ul>
+
+
+    <h2>Functional requirements</h2>
+
+    <p>The functional requirements describe what a user should be able to see and do
+        on the web application. They describe what happens when you load a particular URL
+        or submit a form in a page. There are automated tests to check that you have
+        implemented this functionality correctly.</p>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">Home Page List of positions</h4>
+
+            <p>As a visitor to the site, when I load the home page (URL /) I see a list of
+                up to 10 positions in order of their timestamps, most recent first. Each position
+                must include the position timestamp, title, owner and the first 100 characters of
+                the text of the position description. At the end of each listing
+                should be a link to view the entire position with the text "Read More" and the
+                url <code>/positions/DD</code>
+                where <code>DD</code> is the position id.</p>
+
+            <p class="alert alert-info">The list of positions that appears should be the
+                result of a call to <code>position_list</code> which will extract the most recent
+                10 positions from the database. </p>
+
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">Position Page</h4>
+
+            <p>As a visitor to the site, I can click on the "Read More" link after a position
+                description on the home page, I see a page with the full description of the
+                position at the URL <code>/positions/DD</code> where <code>DD</code> is the position id.</p>
+
+            <p class="alert alert-info">The position page should contain all of the database fields for the position, laid out
+                in a readable way. It should also contain a link to return to the main page.</p>
+
+        </li>
+
+
+    </ul>
+
+
+    <h2>Your Task</h2>
+
+
+    <p>To achieve these requirements you need to write code in <code>interface.py</code> to implement the
+        different functions to interface to the database. Run the unit tests in <code>level2_unit.py</code>
+        to check whether you have met the requirements.
+    </p>
+
+    <p>Once you have a working version of <code>interface.py</code> you can move on to write the
+        application itself in <code>main.py</code>. Take each required page in turn and write the
+        code to generate the content using the functions you have written. You can check
+        the functional requirements yourself and run the unit tests in <code>level2_functional.py</code>
+        to validate that you've met the requirements.</p>
+
+    <ul>
+        <li><a href="http://pwp.stevecassidy.net/bottle/python-webapps.html">Python Web Applications</a>.</li>
+        <li><a href="http://pwp.stevecassidy.net/pythoncgi/pysqlite.html">Python and SQLite</a> describes the
+            way to send queries to SQLite and get results back.
+        </li>
+        <li><a href="http://pwp.stevecassidy.net/bottle/templating.html">Generating HTML Pages</a> looks at
+            the Bottle page templating system.
+        </li>
+        <li><a href="http://pwp.stevecassidy.net/python/unittest.html">Testing Python Programs</a> covers
+            running unit tests.
+        </li>
+    </ul>
+
+
+    <footer class='footer'>
+        <hr>
+        <div class='container'>
+            <p>Jobs is a class project for COMP249 at Macquarie University</p>
+            <p>Jobs uses <a href="http://twitter.github.com/bootstrap/index.html">Twitter Bootstrap</a></p>
+            <p>Copyright &copy; <a href="http://web.science.mq.edu.au/~cassidy/">Steve Cassidy</a>, 2015</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

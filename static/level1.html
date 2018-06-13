@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FlowTow Requirements: Level 1</title>
+
+    <!-- Bootstrap core CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="draft">
+
+
+  <div class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+      <a class="navbar-brand" href="#">Jobs!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="/static/assignment.html">Assignment Spec</a></li>
+          </ul>
+      </div><!--/.nav-collapse -->
+  </div>
+
+    <div class="container">
+
+	<h1>Level 1</h1>
+
+        <p>For this level you must write a simple web application that generates two pages. You are
+            given a set of requirements below, these are encoded in a set of tests (
+            <code>level1_functional.py</code>
+            in the
+            starter kit) that your application must pass. The tests correspond to the
+            functional requirements below.</p>
+
+
+     <h2>Functional requirements</h2>
+	  
+ <ul class="list-group">
+
+	<li class="list-group-item">
+        <h4 class="list-group-item-heading">Welcome to Jobs</h4>
+        As a visitor to the site, when I load the home page I see the title text <em>"Welcome to Jobs"</em>.
+    </li>
+
+
+	<li class="list-group-item">
+        <h4 class="list-group-item-heading">About Page Link</h4>
+        <p>As a visitor to the site, when I load the home page I see a link to another page
+            with the link text <em>"About"</em>.</p>
+
+    </li>
+
+	<li class="list-group-item">
+        <h4 class="list-group-item-heading">About Page</h4>
+
+        <p>As a visitor to the site, when I click on the link <em>"About"</em> I am taken to
+a page that contains the site manifesto, including the words
+            <em>"Jobs is a new, exciting, job posting service like nothing you've seen before!"</em>.</p>
+    </li>
+
+	<li class="list-group-item">
+        <h4 class="list-group-item-heading">Consistent Design</h4>
+
+        <p>As a visitor to the site, I notice that all the pages on the site have the same
+            design with the same colours and fonts used throughout.</p>
+
+    	<p class='alert alert-info'>Each page will have a similar structure and will link to a
+	    common CSS stylesheet.</p>
+
+    </li>
+ 
+</ul>
+
+<h2>Unit Tests</h2>
+
+        <p>There are no unit tests for this level.</p>
+
+<h2>Your Task</h2>
+
+	<p>To achieve these requirements you will need to build a bottle web application that
+		is able to serve the two HTML pages (Home and About) and the associated 
+		stylesheet.  The techniques to do this are covered here:</p>
+
+      <ul>
+            <li><a href="http://pwp.stevecassidy.net/bottle/python-webapps.html">Python Web Applications</a>.</li>
+            <li><a href="http://pwp.stevecassidy.net/bottle/templating.html">Generating HTML Pages</a> looks at
+            the Bottle page templating system.</li>
+            <li><a href="http://pwp.stevecassidy.net/python/unittest.html">Testing Python Programs</a> covers
+                running unit tests.</li>
+        </ul>
+
+<h2>Getting Started</h2>
+
+        <p>You should be able to unpack the starter kit and run <code>main.py</code> to see a very simple
+        single page web application that is the starting point for your work.   You need to extend this
+        to meet the requirements above.   This application is very similar to others that you will
+        have written in tutorials and so should not present any new problems for you to solve; you
+        just need to apply the techniques you've already learned.</p>
+
+        <p>The functional requirements have been laid out in a suggested ordering. Start by writing
+        code to meet the first requirement before moving on to the second.  Treat each requirement
+        as a sub-problem. Understand what is asked of you and design a solution, then implement it.
+        These requirements may seem too trivial to work like this but as they get more complicated
+        you will benefit from this approach.</p>
+
+        <p>Run the functional tests before and after you implement each requirement. You should see
+        the test fail before, and when you see it pass you know you have a correct solution.  This is
+        known as <em>Test Driven Development</em> - normally you would write the tests yourself to
+        encode your understanding of the users requirements.</p>
+
+
+    <footer class='footer'>
+    <hr>
+      <div class='container'>
+        <p>Jobs is a class project for COMP249 at Macquarie University</p>
+        <p>Jobs uses <a href="http://twitter.github.com/bootstrap/index.html">Twitter Bootstrap</a></p>
+        <p>Copyright &copy; <a href="http://web.science.mq.edu.au/~cassidy/">Steve Cassidy</a>, 2017</p>
+      </div>
+    </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

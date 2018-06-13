@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Assignment Requirements</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="draft">
+
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href="#">Jobs!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/static/assignment.html">Assignment Spec</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+    
+    <div class="container">
+
+<h1>COMP249 Assignment: Job Board Web Application</h1>
+
+<p>This semester we will be writing a simple job board application called
+    Jobs! that allows users to post job position descriptions. </p>
+
+<p>To give you an idea of what the application does, there is a demonstration
+version at <a href="http://comp249.stevecassidy.net/">http://comp249.stevecassidy.net/</a>.
+</p>
+
+<p>Since this is your first significant web application, we've cut down the
+features to make it manageable.  However we maintain the core of the
+application and what you write could be extended to something like a real
+product.  Your application will support logging in users, posting jobs
+    and viewing job listings. We don't require you
+to be able to register new users or handle user profile changes etc.</p>
+
+<p>You are given a 'starter kit' which contains the bare outline of the
+application.  From this starting point, you will implement the full site
+in phases according to a detailed set of functional requirements.  At the end
+of each phase, a set of automated tests will be used to see if you have
+met the criteria for that phase.  Some of the marks for this assignment
+will be based on your passing these automated tests.</p>
+
+<p>While this task may seem quite daunting, it should be achievable if you
+work through the examples we have provided and work on the problem
+bit by bit.  We have run similar tasks in the past in COMP249 and most
+students have succeeded in getting a working system going.</p>
+
+<h2>Level 1</h2>
+
+    <p>The first phase of the project involves writing a basic web application
+    that can serve two pages.</p>
+
+        <p><a href="level1.html">Requirements</a></p>
+
+
+<h2>Level 2</h2>
+
+<p>In this phase you will interface to a backend database and provide
+views that list all positions. </p>
+
+<p><a href="level2.html">Requirements</a></p>
+
+<h2>Level 3</h2>
+
+<p>The next phase of development adds the ability to login to the application
+and post new position listings.</p>
+
+<p><a href="level3.html">Requirements</a></p>
+
+<h2>Going Further</h2>
+
+<p>This is just the start of the project. In Assignment 3 you will rewrite
+the application to use Javascript in the front end and connect to a back-end
+service that I provide.  There will be scope to implement new features when
+you tackle that assignment.</p>
+
+        <h2>Required Python Modules</h2>
+
+        <p>This project makes use of the following Python modules that you will need to install to
+        complete the work and run the tests:</p>
+
+        <ul>
+            <li><a href="https://pypi.python.org/pypi/bottle/0.12.13">Bottle</a> - web development framework</li>
+            <li><a href="https://pypi.python.org/pypi/bottle-sqlite/0.1.3">Bottle SQLite plugin</a>
+                - for database access from Bottle</li>
+            <li><a href="https://pypi.python.org/pypi/WebTest/2.0.29">WebTest</a> - for testing web applications</li>
+        </ul>
+
+        <p>You can use the module installer in PyCharm to install these libraries for your project.</p>
+
+<h2>Starter Kit</h2>
+
+<p>The starter kit is a zip file containing  a set of Python
+files to get you started on this project. These files provide a framework for you
+to work within, you will need to add more code of your own and possibly more
+modules (Python files, templates) to complete the implementation.</p>
+
+<p>You can download the starter pack here:
+    <a href="https://bitbucket.org/mqcomp249/comp249-2018-jobs-starter/get/master.zip">comp249-2018-jobs-starter</a>.
+    It is also available as a Bitbucket project
+    <a href="https://bitbucket.org/mqcomp249/comp249-2018-jobs-starter">comp249-2018-jobs-starter</a>,
+if you are a git user you could fork the repository from there - <strong>please be sure to keep your own version
+        private if you keep your work on Bitbucket (or Github).</strong></p>
+
+<p>The contents of the starter pack are as follows:</p>
+
+<ul>
+    <li><code>database.py</code> - code to create the database and load sample data</li>
+    <li><code>main.py</code> - main application script with a simple example</li>
+    <li><code>interface.py</code> - stubs for the level 2 required functions</li>
+    <li><code>users.py</code> - stubs for the level 3 required functions</li>
+    <li><code>positions.json</code> - sample job listings taken from the github jobs API.</li>
+
+    <li><code>level1_functional.py</code> - functional tests for Level 1</li>
+    <li><code>level2_functional.py</code> - functional tests for Level 2</li>
+    <li><code>level2_unit.py</code> - unit tests for Level 2</li>
+    <li><code>level3_functional.py</code> - functional tests for Level 3</li>
+    <li><code>level3_unit.py</code> - unit tests for Level 3</li>
+
+     <li><code>static</code> - directory containing a sample CSS file</li>
+</ul>
+
+<p>The <code>database.py</code> module contains code to create the database
+tables that you will need for the assignment and load in some sample data from
+the <code>positions.json</code> file.  <strong>You need to run this file to create
+    the database when you start the project.</strong> You can also re-run it if
+you want to reset your database to a known state.</p>
+
+        <p>The database contains the following tables:</p>
+
+        <ul>
+            <li><code>users</code>: fields <code>nick</code> (user nickname), <code>password</code>,
+                <code>avatar</code> (URL of an avatar image)</li>
+            <li><code>sessions</code>: fields <code>sessionid</code>, <code>usernick</code>, where usernick is
+            a reference to the nick field in the users table</li>
+            <li><code>posts</code>: fields <code>id</code>, <code>timestamp</code>, <code>usernick</code>, <code>content</code></li>
+        </ul>
+
+        <p>There are also two other tables <code>votes</code> and <code>follows</code> that are not
+        used in the core requirements but that you can use if you wish to implement further features.</p>
+
+        <p>Each user is identified by a nickname that is stored in the <code>nick</code> field in the
+        <code>users</code> table.  This field is used as a foreign key in other tables to refer to
+        the user.  To select data from both tables you will need to do a query with a join.</p>
+
+        <p>The <code>positions</code> table deserves further comment. The <code>id</code> field is an auto-incremented
+        integer id for each post, you don't need to give this a value, it will automatically get a new unique value
+        when you insert a row.  The <code>timestamp</code> field will also default to the current time
+        and date in the format '2015-02-20 01:45:06' if you don't provide a value when you add a row.  So,
+        to add a row to the <code>positions</code> table you just need:</p>
+
+        <pre><code>
+sql = """INSERT INTO positions (owner, title, location, company, description) VALUES (?, ?, ?, ?, ?)"""
+cursor.execute(sql, [usernick, title, location, company, description])
+db.commit()
+</code>        </pre>
+
+
+<p>The code as provided includes a sample Bottle
+application which you can run.  It doesn't do much other than generate a static page that
+links to a copy of these notes.   This is your starting point for development and
+you should write your code so that <code>main.py</code>  is the main application (when
+I run your code, this is what I'll look for).</p>
+
+<p>You can run the functional and
+unit tests (<code>level1_functional.py</code> <code>level2_unit.py</code>) to check that
+you have met the requirements at each level. To do this,
+open the file in PyCharm and click 'Run', choose to run as "Python unit-test". Alternately,
+    run them from the command line eg. <code>python level1_functional.py</code>.
+</p>
+
+<p>Note that if you follow the written requirements set out in the pages linked above, you
+should pass the functional tests.  A reasonable way to work would be to read and implement
+each functional requirement in turn and then run the functional tests when you are done as 
+a check.</p>
+
+<h2>Submission</h2>
+
+        <p>You will submit this work in two parts: after you have completed <strong>Level 2</strong>, and after you
+            have completed <strong>Level 3</strong>.  The Level 2 submission is intended to check on your progress
+with the assignment so that we can provide you with feedback and identify anyone
+who needs support.   See iLearn for the dates of these submissions.</p>
+
+<p>For each submission you should submit a zip file
+with the same structure as the starter pack. We will expect to run <code>main.py</code>
+to see your application. Include any support files that you need for your application
+to work.  A good idea would be to unpack your zip file at a new location and try to
+run it yourself.</p>
+
+<h2>Grading the Assignment</h2>
+
+  <p>This assignment is worth 20% of the final marks for COMP249.
+      A total of 12 marks will be entirely based on achieving the stated functional
+      and unit-test requirements and passing the automated tests.
+      The remaining 8 marks will be based on the quality of the code and documentation that you
+  	  provide, and on the appearance of your web application.
+      </p>
+
+        <p>Each automated test is worth 0.5 marks; there is a total
+        of 24 tests giving 12 marks in total.  The breakdown of
+        tests for each level is as follows:</p>
+
+  <table class='table'>
+  	<thead>
+  		<tr><th>Level</th><th>Functional Tests</th><th>Unit Tests</th><th>Marks</th></tr>
+  	</thead>
+  	<tbody>
+        <tr><th>1</th><td>4</td><td>-</td><td>2</td></tr>
+  		<tr><th>2</th><td>3</td><td>5</td><td>4</td></tr>
+  		<tr><th>3</th><td>5</td><td>7</td><td>6</td></tr>
+  	</tbody>
+  </table>
+
+        <p><strong>To pass this assignment you must pass all of the automated tests.</strong>.
+        This may seem like a tough requirement but without passing these tests
+        you don't have a working web application. </p>
+
+        <p>The remaining <strong>8 marks</strong> will decide whether you get a Credit
+   	or Distinction/High Distinction for the assignment. The criteria are: </p>
+
+   <dl>
+       <dt>Appearance  (3 Marks)</dt>
+       <dd>Your web application is visually well designed and consistently styled.
+       For a Credit, you will have applied a clear design to all pages in your
+       application.  For a D/HD your design will include some novelty
+       or use advanced aspects of HTML/CSS and possibly Javascript.</dd>
+
+       <dt>Code Quality (3 marks)</dt>
+       <dd> Your code is
+       readable and well structured. For a Credit, we should not have
+       any trouble working out how you implemented a given feature. For a
+       D/HD, you will have thought hard about how the application as
+       a whole fits together and made good use of modules.</dd>
+
+       <dt> Documentation (2 Marks)</dt>
+       <dd>
+       You have provided appropriate documentation. For a Credit, you
+       will have used documentation strings and in-line comments where
+       appropriate in your code. For D/HD, you will have provided documentation of
+       your application that would be useful to a future developer, your
+       documentation will include
+       functional tests in the form of user stories for your new features.</dd>
+  </dl>
+
+   <p>Your final grade will be calculated
+   based on your performance against the above criteria. </p>
+
+ </div>
+</div>
+    <footer class='footer'>
+    <hr>
+      <div class='container'>
+        <p>Jobs is a class project for COMP249 at Macquarie University</p>
+        <p>Jobs uses <a href="http://twitter.github.com/bootstrap/index.html">Twitter Bootstrap</a></p>
+        <p>Copyright &copy; <a href="http://web.science.mq.edu.au/~cassidy/">Steve Cassidy</a>, 2015</p>
+      </div>
+    </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
