@@ -1,7 +1,19 @@
 % rebase('base.html')
-
-
 <p>Welcome to Jobs</p>
+
+<hr>
+
+% for position in position_list:
+
+<p>{{position[1]}}</p>
+<p>{{position[2]}}</p>
+<p>{{position[3]}}</p>
+<p>{{position[4]}}</p>
+<p><a href="/positions/{{position[0]}}">Read More</a></p>
+
+% end
+
+<hr>
 
 <ul>
     <li><a href="/about/">About</a></li>
